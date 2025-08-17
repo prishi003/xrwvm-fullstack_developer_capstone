@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Best Cars Dealership</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <style>
+    .contact-hero {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 60px 0;
+    }
+    .contact-card {
+      border: none;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      overflow: hidden;
+      position: relative;
+    }
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+    .contact-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #1e3c72, #2a5298);
+      transition: left 0.3s ease;
+    }
+    .contact-card:hover::before {
+      left: 0;
+    }
+    .contact-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: #1e3c72;
+      transition: all 0.3s ease;
+    }
+    .contact-card:hover .contact-icon {
+      transform: scale(1.1);
+      color: #2a5298;
+    }
+    .form-control {
+      border: 2px solid #e9ecef;
+      border-radius: 10px;
+      padding: 12px 15px;
+      transition: all 0.3s ease;
+    }
+    .form-control:focus {
+      border-color: #2a5298;
+      box-shadow: 0 0 0 0.2rem rgba(42, 82, 152, 0.25);
+    }
+    .btn-contact {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      border: none;
+      border-radius: 25px;
+      padding: 12px 30px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .btn-contact:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(30, 60, 114, 0.4);
+    }
+    .map-container {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+    .animate-on-scroll.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+  <script>
+    // Smooth scroll animation
+    document.addEventListener('DOMContentLoaded', function() {
+      const animateElements = document.querySelectorAll('.animate-on-scroll');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+          }
+        });
+      });
+      
+      animateElements.forEach(element => {
+        observer.observe(element);
+      });
+    });
+
+    // Contact form submission
+    function submitForm(event) {
+      event.preventDefault();
+      const form = event.target;
+      const formData = new FormData(form);
+      
+      // Show success message
+      const alertDiv = document.createElement('div');
+      alertDiv.className = 'alert alert-success alert-dismissible fade show mt-3';
+      alertDiv.innerHTML = `
+        <strong>Thank you!</strong> Your message has been sent successfully. We'll get back to you within 24 hours.
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      `;
+      form.appendChild(alertDiv);
+      
+      // Reset form
+      form.reset();
+      
+      // Remove alert after 5 seconds
+      setTimeout(() => {
+        if (alertDiv.parentNode) {
+          alertDiv.remove();
+        }
+      }, 5000);
+    }
+  </script>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #1e3c72 100%); box-shadow: 0 4px 20px rgba(30, 60, 114, 0.4); backdrop-filter: blur(10px); padding: 15px 0;">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="/" style="text-decoration: none;">
+        <div class="brand-icon me-3" style="width: 50px; height: 50px; background: rgba(255, 255, 255, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);">
+          <i class="fas fa-car" style="color: white; font-size: 1.5rem;"></i>
+        </div>
+        <div>
+          <h3 class="mb-0" style="color: white; font-weight: 700; font-size: 1.8rem; letter-spacing: -0.5px;">Best Cars</h3>
+          <small style="color: rgba(255, 255, 255, 0.8); font-size: 0.8rem; font-weight: 500;">Premium Dealerships</small>
+        </div>
+      </a>
+      
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" style="padding: 8px 12px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item mx-2">
+            <a class="nav-link position-relative" style="font-size: 1.1rem; font-weight: 600; padding: 12px 20px; border-radius: 25px; transition: all 0.3s ease;" href="/" onmouseover="this.style.background='rgba(255, 255, 255, 0.15)'; this.style.backdropFilter='blur(10px)'" onmouseout="this.style.background='transparent'; this.style.backdropFilter='none'">
+              <i class="fas fa-home me-2"></i>Home
+            </a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link position-relative" style="font-size: 1.1rem; font-weight: 600; padding: 12px 20px; border-radius: 25px; transition: all 0.3s ease;" href="/about" onmouseover="this.style.background='rgba(255, 255, 255, 0.15)'; this.style.backdropFilter='blur(10px)'" onmouseout="this.style.background='transparent'; this.style.backdropFilter='none'">
+              <i class="fas fa-users me-2"></i>About Us
+            </a>
+          </li>
+          <li class="nav-item mx-2">
+            <a class="nav-link active position-relative" style="font-size: 1.1rem; font-weight: 600; padding: 12px 20px; border-radius: 25px; transition: all 0.3s ease; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px);" aria-current="page" href="/contact">
+              <i class="fas fa-envelope me-2"></i>Contact
+            </a>
+          </li>
+        </ul>
+        
+        <div class="d-flex align-items-center">
+          <div class="search-container position-relative me-3" style="display: none;">
+            <input type="text" class="form-control" placeholder="Search contact..." style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white; border-radius: 20px; padding: 8px 40px 8px 15px; backdrop-filter: blur(10px);">
+            <i class="fas fa-search position-absolute" style="right: 15px; top: 50%; transform: translateY(-50%); color: rgba(255, 255, 255, 0.7);"></i>
+          </div>
+          <button class="btn btn-outline-light" onclick="toggleSearch()" style="border-radius: 25px; border: 1px solid rgba(255, 255, 255, 0.3); padding: 8px 15px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  
+  <script>
+    function toggleSearch() {
+      const searchContainer = document.querySelector('.search-container');
+      const searchBtn = document.querySelector('button[onclick="toggleSearch()"]');
+      if (searchContainer.style.display === 'none' || !searchContainer.style.display) {
+        searchContainer.style.display = 'block';
+        searchBtn.innerHTML = '<i class="fas fa-times"></i>';
+      } else {
+        searchContainer.style.display = 'none';
+        searchBtn.innerHTML = '<i class="fas fa-search"></i>';
+      }
+    }
+  </script>
+
+  <!-- Hero Section -->
+  <section class="contact-hero">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold mb-4">Contact Us 📧 💬</h1>
+      <p class="lead">Ready to find your perfect vehicle? Get in touch with our expert team today!</p>
+    </div>
+  </section>
+
+  <!-- Contact Information Cards -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row g-4 mb-5">
+        <div class="col-md-4 animate-on-scroll">
+          <div class="card contact-card h-100 text-center p-4">
+            <div class="contact-icon location-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <h5 class="card-title">Visit Our Showroom 🏢</h5>
+            <p class="card-text">
+              123 Auto Plaza Drive<br>
+              Downtown District<br>
+              New York, NY 10001
+            </p>
+            <small class="text-muted">Open Mon-Sat: 9AM-8PM, Sun: 11AM-6PM</small>
+          </div>
+        </div>
+        
+        <div class="col-md-4 animate-on-scroll">
+          <div class="card contact-card h-100 text-center p-4">
+            <div class="contact-icon phone-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <h5 class="card-title">Call Us 📞</h5>
+            <p class="card-text">
+              <strong>Sales:</strong> (555) 123-CARS<br>
+              <strong>Service:</strong> (555) 123-SERV<br>
+              <strong>Finance:</strong> (555) 123-LOAN
+            </p>
+            <small class="text-muted">Available 7 days a week</small>
+          </div>
+        </div>
+        
+        <div class="col-md-4 animate-on-scroll">
+          <div class="card contact-card h-100 text-center p-4">
+            <div class="contact-icon email-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h5 class="card-title">Email Us ✉️</h5>
+            <p class="card-text">
+              <strong>General:</strong> info@bestcars.com<br>
+              <strong>Sales:</strong> sales@bestcars.com<br>
+              <strong>Support:</strong> support@bestcars.com
+            </p>
+            <small class="text-muted">Response within 2 hours</small>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form and Map -->
+      <div class="row g-5">
+        <div class="col-lg-6 animate-on-scroll">
+          <div class="card contact-card p-4">
+            <h3 class="mb-4">Send Us a Message</h3>
+            <form onsubmit="submitForm(event)">
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label for="firstName" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="firstName" required>
+                </div>
+                <div class="col-md-6">
+                  <label for="lastName" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="lastName" required>
+                </div>
+                <div class="col-12">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="col-12">
+                  <label for="phone" class="form-label">Phone</label>
+                  <input type="tel" class="form-control" id="phone">
+                </div>
+                <div class="col-12">
+                  <label for="interest" class="form-label">I'm interested in</label>
+                  <select class="form-control" id="interest">
+                    <option value="">Select an option</option>
+                    <option value="buying">Buying a vehicle</option>
+                    <option value="selling">Selling my vehicle</option>
+                    <option value="service">Service & maintenance</option>
+                    <option value="financing">Financing options</option>
+                    <option value="other">Other inquiry</option>
+                  </select>
+                </div>
+                <div class="col-12">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea class="form-control" id="message" rows="4" placeholder="Tell us how we can help you..." required></textarea>
+                </div>
+                <div class="col-12">
+                  <button type="submit" class="btn btn-contact btn-lg w-100">Send Message</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        
+        <div class="col-lg-6 animate-on-scroll">
+          <div class="map-container">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.3123456789!2d-73.98765432!3d40.75643210!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDDCsDQ1JzIzLjIiTiA3M8KwNTknMTUuNiJX!5e0!3m2!1sen!2sus!4v1234567890123"
+              width="100%" 
+              height="400" 
+              style="border:0;" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+          <div class="mt-4">
+            <h4>Find Us Easily</h4>
+            <p class="text-muted">Located in the heart of the city with easy access to major highways. Plenty of parking available for test drives and service appointments.</p>
+            <div class="d-flex gap-3 mt-3">
+              <span class="badge bg-primary">🚗 Free Test Drives</span>
+              <span class="badge bg-success">🅿️ Free Parking</span>
+              <span class="badge bg-warning">🚇 Metro Accessible</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Contact Section -->
+  <section class="bg-light py-5">
+    <div class="container">
+      <div class="text-center animate-on-scroll">
+        <h3 class="mb-4">Need Immediate Assistance?</h3>
+        <p class="lead mb-4">Our team is standing by to help you with any questions about our vehicles, financing, or services.</p>
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
+          <a href="tel:5551234567" class="btn btn-contact btn-lg">
+            <i class="fas fa-phone me-2"></i>Call Now
+          </a>
+          <a href="mailto:info@bestcars.com" class="btn btn-outline-primary btn-lg">
+            <i class="fas fa-envelope me-2"></i>Email Us
+          </a>
+          <a href="/dealers" class="btn btn-outline-secondary btn-lg">
+            <i class="fas fa-car me-2"></i>Browse Inventory
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h5>Best Cars Dealership</h5>
+          <p class="mb-0">Your trusted partner in finding the perfect vehicle.</p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <p class="mb-0">&copy; 2024 Best Cars Dealership. All rights reserved.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Font Awesome for icons -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

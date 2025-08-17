@@ -1,68 +1,245 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <!-- Link the style sheet here -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us - Best Cars Dealership</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <style>
+    .team-card {
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    .team-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+    .team-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+    .team-card:hover::before {
+      left: 100%;
+    }
+    .team-image {
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .team-card:hover .team-image {
+      transform: scale(1.1);
+    }
+    .role-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 2;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .card-body {
+      background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    }
+    .contact-info {
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-top: 10px;
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Add staggered animation to cards
+      const cards = document.querySelectorAll('.team-card');
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        setTimeout(() => {
+          card.style.transition = 'all 0.6s ease';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, index * 200);
+      });
+    });
+  </script>
 </head>
-<div>
-  <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise; height: 1in;">
-    <div class="container-fluid">
-      <h2 style="padding-right: 5%;">Dealerships</h2>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #1e3c72 100%); box-shadow: 0 4px 20px rgba(30, 60, 114, 0.4); backdrop-filter: blur(10px); padding: 15px 0;">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="/" style="text-decoration: none;">
+        <div class="brand-icon me-3" style="width: 50px; height: 50px; background: rgba(255, 255, 255, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);">
+          <i class="fas fa-car" style="color: white; font-size: 1.5rem;"></i>
+        </div>
+        <div>
+          <h3 class="mb-0" style="color: white; font-weight: 700; font-size: 1.8rem; letter-spacing: -0.5px;">Best Cars</h3>
+          <small style="color: rgba(255, 255, 255, 0.8); font-size: 0.8rem; font-weight: 500;">Premium Dealerships</small>
+        </div>
+      </a>
+      
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" style="padding: 8px 12px; border-radius: 8px; background: rgba(255, 255, 255, 0.1);">
         <span class="navbar-toggler-icon"></span>
       </button>
+      
       <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" aria-current="page" href="/">Home</a>
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+          <li class="nav-item mx-2">
+            <a class="nav-link position-relative" style="font-size: 1.1rem; font-weight: 600; padding: 12px 20px; border-radius: 25px; transition: all 0.3s ease;" href="/" onmouseover="this.style.background='rgba(255, 255, 255, 0.15)'; this.style.backdropFilter='blur(10px)'" onmouseout="this.style.background='transparent'; this.style.backdropFilter='none'">
+              <i class="fas fa-home me-2"></i>Home
+            </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" style="font-size: larger;" href="/about">About Us</a>
+          <li class="nav-item mx-2">
+            <a class="nav-link active position-relative" style="font-size: 1.1rem; font-weight: 600; padding: 12px 20px; border-radius: 25px; transition: all 0.3s ease; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px);" aria-current="page" href="/about">
+              <i class="fas fa-users me-2"></i>About Us
+            </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" style="font-size: larger;" href="/contact">Contact Us</a>
+          <li class="nav-item mx-2">
+            <a class="nav-link position-relative" style="font-size: 1.1rem; font-weight: 600; padding: 12px 20px; border-radius: 25px; transition: all 0.3s ease;" href="/contact" onmouseover="this.style.background='rgba(255, 255, 255, 0.15)'; this.style.backdropFilter='blur(10px)'" onmouseout="this.style.background='transparent'; this.style.backdropFilter='none'">
+              <i class="fas fa-envelope me-2"></i>Contact
+            </a>
           </li>
         </ul>
+        
+        <div class="d-flex align-items-center">
+          <div class="search-container position-relative me-3" style="display: none;">
+            <input type="text" class="form-control" placeholder="Search team..." style="background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); color: white; border-radius: 20px; padding: 8px 40px 8px 15px; backdrop-filter: blur(10px);">
+            <i class="fas fa-search position-absolute" style="right: 15px; top: 50%; transform: translateY(-50%); color: rgba(255, 255, 255, 0.7);"></i>
+          </div>
+          <button class="btn btn-outline-light" onclick="toggleSearch()" style="border-radius: 25px; border: 1px solid rgba(255, 255, 255, 0.3); padding: 8px 15px; background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
       </div>
     </div>
   </nav>
   
-    <div class="card" style="width: 80%;margin: auto; margin-top:5%;">
-      <div class="banner" name="about-header">
-      <!-- Insert header information here -->
-      </div>
-      <div style="display: flex;flex-direction: row; margin:auto">
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person1</p>
-          <p>Person1 Title</p>
-          <p class="card-text">Some text that explains the person1 in about 2 short sentences</p>
-          <p>person1@example.com</p>
-        </div>
-      </div>
+  <script>
+    function toggleSearch() {
+      const searchContainer = document.querySelector('.search-container');
+      const searchBtn = document.querySelector('button[onclick="toggleSearch()"]');
+      if (searchContainer.style.display === 'none' || !searchContainer.style.display) {
+        searchContainer.style.display = 'block';
+        searchBtn.innerHTML = '<i class="fas fa-times"></i>';
+      } else {
+        searchContainer.style.display = 'none';
+        searchBtn.innerHTML = '<i class="fas fa-search"></i>';
+      }
+    }
+  </script>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person2</p>
-          <p>Person2 Title</p>
-          <p class="card-text">Some text that explains the person2 in about 2 short sentences</p>
-          <p>person2@example.com</p>
-        </div>
-      </div>
+  <!-- Main Content -->
+  <div class="container mt-4">
+    <!-- Header Section -->
+    <div class="text-center mb-4">
+      <h1 class="display-5 mb-3">About Us</h1>
+      <p class="fs-6 text-muted px-md-5">Welcome to Best Cars dealership, your trusted partner for premium automobiles in North America.</p>
+    </div>
 
-      <div class="card" style="width: 30%;">
-        <img class="card-img-top" src="/static/person.png" alt="Card image">
-        <div class="card-body">
-          <p class="title">Person3</p>
-          <p>Person3 Title</p>
-          <p class="card-text">Some text that explains the person3 in about 2 short sentences</p>
-          <p>person3@example.com</p>
+    <!-- Team Section -->
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <h2 class="text-center mb-4">Meet Our Expert Team</h2>
+        <div class="row g-4 justify-content-center">
+          
+          <!-- Team Member 1 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card team-card h-100">
+              <div class="position-relative">
+                <img src="/static/person.jpeg" class="card-img-top team-image" alt="Michael Rodriguez">
+                <span class="badge bg-primary role-badge">Sales Manager</span>
+              </div>
+              <div class="card-body text-center p-4">
+                <h5 class="card-title fw-bold">Michael Rodriguez</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Senior Sales Manager</h6>
+                <p class="card-text small">15+ years experience in luxury & performance vehicles. Committed to finding perfect matches for customers.</p>
+                <div class="contact-info">michael.rodriguez@bestcars.com</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 2 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card team-card h-100">
+              <div class="position-relative">
+                <img src="/static/person1.jpeg" class="card-img-top team-image" alt="Sarah Chen">
+                <span class="badge bg-success role-badge">Finance Director</span>
+              </div>
+              <div class="card-body text-center p-4">
+                <h5 class="card-title fw-bold">Sean Chen</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Finance & Insurance Director</h6>
+                <p class="card-text small">Automotive financing expert working with multiple lenders to secure the best rates and terms.</p>
+                <div class="contact-info">sean.chen@bestcars.com</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Team Member 3 -->
+          <div class="col-lg-4 col-md-6">
+            <div class="card team-card h-100">
+              <div class="position-relative">
+                <img src="/static/person3.jpeg" class="card-img-top team-image" alt="David Thompson">
+                <span class="badge bg-warning role-badge">Service Manager</span>
+              </div>
+              <div class="card-body text-center p-4">
+                <h5 class="card-title fw-bold">David Thompson</h5>
+                <h6 class="card-subtitle mb-2 text-muted">Service & Maintenance Manager</h6>
+                <p class="card-text small">Certified service department overseer ensuring highest standards for all vehicle brands.</p>
+                <div class="contact-info">david.thompson@bestcars.com</div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
-    </div>
-    </div>
-    
-</div>
 
+    <!-- Company Values Section -->
+    <div class="row mt-5 pt-5 border-top">
+      <div class="col-12 text-center">
+        <h3 class="mb-4">Why Choose Best Cars?</h3>
+        <div class="row">
+          <div class="col-md-4 mb-3">
+            <h5>Quality Assurance</h5>
+            <p>Every vehicle undergoes rigorous inspection to ensure reliability and performance.</p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <h5>Competitive Pricing</h5>
+            <p>We offer the best prices in the market with transparent, no-hidden-fees policy.</p>
+          </div>
+          <div class="col-md-4 mb-3">
+            <h5>Customer Service</h5>
+            <p>Our dedicated team provides exceptional service from purchase to after-sales support.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="mt-5 py-4 bg-light text-center">
+    <p class="mb-0">&copy; 2024 Best Cars Dealership. All rights reserved.</p>
+  </footer>
+
+</body>
 </html>
